@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2102964288175281854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2102964288175281826}
+  - component: {fileID: 2102964288175281825}
+  - component: {fileID: 2102964288175281827}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102964288175281826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102964288175281854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.008846, y: -179.64264, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102964288175281825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102964288175281854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd2b158addf64c18a71ce2167c8c1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy1Prefab: {fileID: 5059865779594889076, guid: 19274b659b61eef4f842b9cbcb055943,
+    type: 3}
+  characterRed: {r: 0.6981132, g: 0.14419815, b: 0.08232466, a: 1}
+  bulletRed: {r: 1, g: 0, b: 0, a: 1}
+  characterBlue: {r: 0.022027401, g: 0.11052707, b: 0.5188679, a: 1}
+  bulletBlue: {r: 0, g: 0.099416494, b: 1, a: 1}
+  worldGreen: {r: 0.21196677, g: 0.5188679, b: 0.13950694, a: 1}
+  characterGreen: {r: 0.042225968, g: 0.2924528, b: 0, a: 1}
+  bulletGreen: {r: 0, g: 1, b: 0.07280898, a: 1}
+  worldOrange: {r: 0.8584906, g: 0.55723464, b: 0.14983091, a: 1}
+  bulletOrange: {r: 0.85882354, g: 0.5568628, b: 0.14901961, a: 1}
+  characterOrange: {r: 0, g: 0, b: 0, a: 0}
+  worldBrown: {r: 0.3301887, g: 0.21062173, b: 0.14484692, a: 1}
+  bulletBrown: {r: 0.32941177, g: 0.21176471, b: 0.14509805, a: 1}
+  characterBlack: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  characterPink: {r: 0, g: 0, b: 0, a: 0}
+  cam: {fileID: 0}
+  player: {fileID: 0}
+  showDamageText: 1
+  showDialogText: 1
+  menuPanel: {fileID: 0}
+  hasEnemies: 0
+  audioManager: {fileID: 0}
+--- !u!114 &2102964288175281827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102964288175281854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a41e4a8d145e848871a025a694b163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSlider: {fileID: 0}
+  bgmSlider: {fileID: 0}
+  sounds:
+  - name: Run1
+    clip: {fileID: 8300000, guid: 42b140aea25ca0440b4c3a886f26a8d1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShotGun1
+    clip: {fileID: 8300000, guid: 84c5cefb0adb76f4a9b0c3b089ee3323, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SingleShooter1
+    clip: {fileID: 8300000, guid: 3937069c9368f9b4ca0b26704c93fba7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rifle1
+    clip: {fileID: 8300000, guid: c207e3c4f7b040a4a88e016de748e70f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MiddleFingerGun1
+    clip: {fileID: 8300000, guid: cc5c72f3ea8ebf84a88792be17c31094, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact1
+    clip: {fileID: 8300000, guid: 8ec5f2ac65921fa40b89e09f30d292f3, type: 3}
+    volume: 0.5
+    pitch: 2.65
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact2
+    clip: {fileID: 8300000, guid: d71cda72861a79a4986c438b8779fda6, type: 3}
+    volume: 1
+    pitch: 2.82
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact3
+    clip: {fileID: 8300000, guid: 4e50ee1f333c33e4981595d1ee8ca2ba, type: 3}
+    volume: 1
+    pitch: 0.52
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact4
+    clip: {fileID: 8300000, guid: 40cbaaafbff63764d977c2fa7ecbef4a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal1
+    clip: {fileID: 8300000, guid: 6fd3a617c4fa40d4a98506093c83cb30, type: 3}
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: TripleSingleShooter1
+    clip: {fileID: 8300000, guid: 2bdaf59ed021d7848869e67f1c1d4cb0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

@@ -1,0 +1,33 @@
+{
+    "isInteractive":true,
+    "branches":
+    [
+        {"lines":[
+            {
+                "id":"0-0",
+                "name":"Billy",
+                "line":"Hey, mister! \n djkfhd"
+            },
+            {
+                "id":"0-1",
+                "name":"Billy",
+                "line":"Can you help me?",
+                "hasOptions":true
+            }
+        ]},
+        {"lines":[
+            {
+                "id":"1-0",
+                "name":"Billy",
+                "line":"Thanx man."
+            }
+        ]},
+        {"lines":[
+            {
+                "id":"2-0",
+                "name":"Billy",
+                "line":"Wow man, you suck."
+            }
+        ]}
+    ]
+}

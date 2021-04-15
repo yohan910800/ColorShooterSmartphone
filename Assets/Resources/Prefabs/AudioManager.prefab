@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6904597550585123604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6904597550585123610}
+  - component: {fileID: 6904597550585123605}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6904597550585123610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904597550585123604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.12546, y: -106.6467, z: -3388.375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6904597550585123605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904597550585123604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a41e4a8d145e848871a025a694b163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSlider: {fileID: 0}
+  bgmSlider: {fileID: 0}
+  sounds:
+  - name: Run1
+    clip: {fileID: 8300000, guid: 42b140aea25ca0440b4c3a886f26a8d1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShotGun1
+    clip: {fileID: 8300000, guid: 84c5cefb0adb76f4a9b0c3b089ee3323, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SingleShooter1
+    clip: {fileID: 8300000, guid: 3937069c9368f9b4ca0b26704c93fba7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rifle1
+    clip: {fileID: 8300000, guid: c207e3c4f7b040a4a88e016de748e70f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MiddleFingerGun1
+    clip: {fileID: 8300000, guid: cc5c72f3ea8ebf84a88792be17c31094, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact1
+    clip: {fileID: 8300000, guid: 8ec5f2ac65921fa40b89e09f30d292f3, type: 3}
+    volume: 0.5
+    pitch: 2.65
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact2
+    clip: {fileID: 8300000, guid: d71cda72861a79a4986c438b8779fda6, type: 3}
+    volume: 1
+    pitch: 2.82
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact3
+    clip: {fileID: 8300000, guid: 035a45d66401d4c4889d9eac1708913c, type: 3}
+    volume: 1
+    pitch: 3
+    loop: 0
+    source: {fileID: 0}
+  - name: Impact4
+    clip: {fileID: 8300000, guid: 40cbaaafbff63764d977c2fa7ecbef4a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal1
+    clip: {fileID: 8300000, guid: 6fd3a617c4fa40d4a98506093c83cb30, type: 3}
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: TripleSingleShooter1
+    clip: {fileID: 8300000, guid: 2bdaf59ed021d7848869e67f1c1d4cb0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BossBgm
+    clip: {fileID: 8300000, guid: 2c3dfc2acb92b984a9db40ac01a246b7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TheEraser
+    clip: {fileID: 8300000, guid: 09d6a6682d2d3fc42bdf8f540620ba88, type: 3}
+    volume: 0.7
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: MainBgm
+    clip: {fileID: 8300000, guid: 60f2d6a0f4179f84584ff46ccdf768b1, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: LaserShoot1
+    clip: {fileID: 8300000, guid: cf72b77b67ab95844ac21f81c4ac4ef1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MeleeModeImpact1
+    clip: {fileID: 8300000, guid: e5e4781c2b051c241838c7eb69a6f502, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin1
+    clip: {fileID: 8300000, guid: a9a04619c6a226d4b9a95662d0f04cc9, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameFinishBgm
+    clip: {fileID: 8300000, guid: 04e1cb3ad6a23ad4b9387128e6fc978e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bipBeforeExplosion
+    clip: {fileID: 8300000, guid: e715e5e9795c38f4dbd3cd4764affc49, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MineExplosion
+    clip: {fileID: 8300000, guid: 3d1d0c5686d67d64b9eda4b866fbefd0, type: 3}
+    volume: 1
+    pitch: 0.86
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDie
+    clip: {fileID: 8300000, guid: 14fd167c2b361404aaa7d178805b39e1, type: 3}
+    volume: 1
+    pitch: 0.9
+    loop: 0
+    source: {fileID: 0}
+  - name: rndSlot1
+    clip: {fileID: 8300000, guid: ce4862a937a8de74e834b56883f27f6b, type: 3}
+    volume: 1
+    pitch: 3
+    loop: 1
+    source: {fileID: 0}
+  - name: rndSlotEnd1
+    clip: {fileID: 8300000, guid: ce4862a937a8de74e834b56883f27f6b, type: 3}
+    volume: 1
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: GetCoin
+    clip: {fileID: 8300000, guid: a9a04619c6a226d4b9a95662d0f04cc9, type: 3}
+    volume: 1
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
