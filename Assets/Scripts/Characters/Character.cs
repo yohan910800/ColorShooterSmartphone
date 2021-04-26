@@ -13,9 +13,7 @@ public class Character : MonoBehaviour, ICharacter {
     // Public fields
     [HideInInspector]
     public StateUI stateUI;
-    //public StateUI stateUIFixe;
     public GameObject stateUIPrefab;
-    //public GameObject stateUIPrefabFixe;
 
     // Serialized fields for the character stats
     [SerializeField] int initHP = 0;
@@ -94,9 +92,7 @@ public bool isPoisoned { get; set; }//yohan added
         damageTextPrefab = Resources.Load<GameObject>("Prefabs/DamageText");
         dialogTextPrefab = Resources.Load<GameObject>("Prefabs/StateUIs/FloatingDialog");
         GameObject stateUIInstance = Instantiate(stateUIPrefab,Vector3.zero,Quaternion.identity) as GameObject;
-        //GameObject stateUIInstanceFixe = Instantiate(stateUIPrefabFixe,Vector3.zero,Quaternion.identity) as GameObject;
         stateUI = stateUIInstance.GetComponentInChildren<StateUI>();
-        //stateUIFixe = stateUIInstanceFixe.GetComponentInChildren<StateUI>();
         InitStateUI();
         
         animationManager = GetComponent<AnimationManager>();
@@ -116,7 +112,6 @@ public bool isPoisoned { get; set; }//yohan added
 
     protected virtual void InitStateUI(){
         stateUI.Init(this,false,false);
-        //stateUIFixe.Init(this,true,true);
     }
 
     protected virtual void InitInventory(){
@@ -215,7 +210,6 @@ public bool isPoisoned { get; set; }//yohan added
         {
             activeWeapon = weapon;
             activeWeapon.Activate(bulletColor);
-            //GetGameObject().GetComponent<AnimationManager>().hand1.spriteRenderer.color = Color.white;
         }
         else
         {

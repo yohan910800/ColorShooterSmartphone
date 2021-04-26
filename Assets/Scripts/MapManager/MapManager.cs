@@ -45,9 +45,6 @@ public class MapManager : MonoBehaviour
     public Vector3 enemyColliderScale = new Vector3(0.9f, 0.9f);
     public Colors enemyColor;
     //cinematic
-
-    //public GameObject playerDeadBody;
-    //public GameObject[] playerMainBody;
     public GameObject diedAnimKindOfParticle;
 
     //
@@ -71,16 +68,6 @@ public class MapManager : MonoBehaviour
 
         //cinematic
 
-        //playerDeadBody = GameObject.Find("Player").transform.Find("PlayerDeadBody").gameObject;
-        //playerMainBody = new GameObject[6];
-
-        //playerMainBody[0] = GameObject.Find("Player").transform.Find("Body").gameObject;
-        //playerMainBody[1] = GameObject.Find("Player").transform.Find("Face").gameObject;
-        //playerMainBody[2] = GameObject.Find("Player").transform.Find("Hand1").gameObject;
-        //playerMainBody[3] = GameObject.Find("Player").transform.Find("Hand2").gameObject;
-        //playerMainBody[4] = GameObject.Find("Player").transform.Find("Foot1").gameObject;
-        //playerMainBody[5] = GameObject.Find("Player").transform.Find("Foot2").gameObject;
-
         diedAnimKindOfParticle = GameObject.Find("RelieveAnimation");
 
         StartCoroutine(DisableMovementForCinematic(4.0f));
@@ -88,11 +75,6 @@ public class MapManager : MonoBehaviour
     public IEnumerator DisableMovementForCinematic(float duration)
     {
         float time = 0.0f;
-        //bool justOnceBossName = false;
-        //if (phase != 0)
-        //{
-        //    time = duration;
-        //}
         while (time < duration + 2)
         {
             if (time < duration)
@@ -101,11 +83,6 @@ public class MapManager : MonoBehaviour
                 player.GetComponent<PlayerCombatV1>().enabled = false;
                 GameObject.Find("MainCamera").GetComponent<CameraControl>().enabled = false;
                 GameObject.Find("MainCamera").GetComponent<Animator>().enabled = true;
-                //if (justOnceBossName == false)
-                //{
-
-                //    justOnceBossName = true;
-                //}
             }
             else
             {
@@ -130,19 +107,10 @@ public class MapManager : MonoBehaviour
     {
         prefabs = new GameObject[200];
     }
-     void Update()
-    {
-        Debug.Log("Current phase"+phase);
-    }
-
-
-
     public virtual void ActivatePhase(int phase)//check in wich part of the tutorial we are 
     {
-
         switch (phase)
         {
-
             case 0:
                 break;
             case 1:
@@ -159,32 +127,23 @@ public class MapManager : MonoBehaviour
                 break;
             case 7:
                 break;
-
         }
-
     }
     protected virtual void OnLoadPrefab(int i, string enemyName)
     {
         enemyNameList.Add(enemyName);
-        //foreach (string name in enemyNameList)
-        //{
-            prefabs[i] = Resources.Load<GameObject>("Prefabs/Characters/" + enemyNameList[i]/*name*/);
-        //}
+         prefabs[i] = Resources.Load<GameObject>("Prefabs/Characters/" + enemyNameList[i]/*name*/);
     }
-
     protected virtual void SpawnEnemy(int i, Vector2 pos)
     {
         ICharacter enemy = Instantiate(prefabs[i], pos, Quaternion.identity).GetComponent<ICharacter>();
         gm.AddEnemy(enemy);
         enemy.SetColor(enemyColor);
-
         enemy.Init();
-
         enemy.OnDeathEvent += OnEnemyDeath;
         enemyArray.Add( enemy);
         enemy.GetGameObject().name = "TutorialSoldier" + enemyCount.ToString();// the name of the enemy and the name of Json file wich containes the lines of the enemy are the same
         enemyCount++;
-
         enemy.GetGameObject().GetComponent<BoxCollider2D>().size = enemyColliderScale;
         enemy.GetGameObject().transform.localScale = enemyScale;
         enemy.GetStats().SetBaseSpeed(enemySpeed);// needed for the enemies in Level1 need also to be set in the inspector to get the hp bar update
@@ -194,20 +153,16 @@ public class MapManager : MonoBehaviour
         enemy.GetDrops().SetEnergy(enemyDropedEnergy);
         enemy.GetDrops().SetCredits(enemyDropedCredits);
         enemy.GetStateUI().Refresh();
-
     }
 
     public virtual void MoveTriggerZoneToTheNextPosition(int positionIndex)
     {
-        
     }
     public virtual void OnEnemyDeath(ICharacter character)
     {
         character.OnDeathEvent -= OnEnemyDeath;
-        
-            enemyDeadCount++;
+        enemyDeadCount++;
     }
-
     public virtual void Reset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

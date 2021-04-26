@@ -10,7 +10,6 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
     public event Action<int> OnColorSwitch;
     public event Action<ICharacter> OnAimLock;
     public event Action<GameObject> OnTap;
-
     // Variables
     public bool isFrozen { get; set; }
     public int phase;
@@ -32,7 +31,6 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
         target = GameObject.Find("Player");
         originPos= transform.position;
         targetLastPos = target.transform.position;
-        //direction = Vector2.zero;
         isFrozen = true;
         character = GetComponent<ICharacter>();
         phase = character.phase;
@@ -48,7 +46,6 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
     {
         phase = character.phase;
     }
-
     public Vector2 GetDirection()
     {
         return direction;
@@ -69,7 +66,6 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
                 GoOnOriginPosition();
                 break;
             case 3:
-                //shootFire
                 break;
 
         }
@@ -86,12 +82,8 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
             character.phase = 3;
         }
     }
-   
-
-
     void Burst()
     {
-
         if (stopBurst == false)
         {
             if (isAttacking == false)
@@ -121,12 +113,9 @@ public class FireBrunchInput : MonoBehaviour, IInputModule
                 }
             }
         }
-
         else
         {
             return;
         }
     }
-
-   
 }

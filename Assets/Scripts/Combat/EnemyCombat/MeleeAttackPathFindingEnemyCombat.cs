@@ -50,8 +50,6 @@ public class MeleeAttackPathFindingEnemyCombat : EnemyCombatV1
         }
 
 
-
-        //Log.log("dist "+dist);
         
         if (target == null) return;
 

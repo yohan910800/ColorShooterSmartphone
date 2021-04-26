@@ -11,11 +11,8 @@ public class DialogManager : MonoBehaviour {
     public GameObject dialogPanel;
     public TextMeshProUGUI nameTmp;
     public TextMeshProUGUI lineTmp;
-
     public Button nextBtn;
     public GameObject optionsPanel;
-    //public Image charImg;
-
     public event Action<string,bool> OnOptionSelected;
     public event Action OnDialogEnded;
 
@@ -23,13 +20,6 @@ public class DialogManager : MonoBehaviour {
     bool isActive;
     DialogLine currentLine;
 
-    void Start() {
-        
-    }
-
-    void Update() {
-    }
-  
     public DialogSet NewDialog(string fileName){
         if(isActive){
             Log.log("An other dialog is active.");
@@ -54,27 +44,14 @@ public class DialogManager : MonoBehaviour {
             nextBtn.enabled = true;
             optionsPanel.SetActive(false);
         }
-        else{
-            //nextBtn.enabled = false;
-            //optionsPanel.SetActive(true);
-        }
+        
         nameTmp.SetText(currentLine.name);
         lineTmp.SetText(currentLine.line);
-        //if (currentLine.spriteName != null)
-        //{
-        //    charImg.enabled = true;
-        //    charImg.sprite = Resources.Load<Sprite>("Sprites/Characters/Thumbnails/" + currentLine.spriteName);
-        //}
-        //else
-        //{
-        //    charImg.enabled = false;
-        //}
     }
 
     public void NextBtnPress(){
         ToNextLine();
     }
-
     public void OptionSelect(bool val){
         if(OnOptionSelected!=null){
             OnOptionSelected(currentLine.id, val);

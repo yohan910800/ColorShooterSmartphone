@@ -16,9 +16,7 @@ public class EnemyChargeCombat : EnemyCombatV1
             this.character.AddColor(c);
         }
         character.SetBulletColor(colors[0]);
-
     }
-
     void SetRandomBulletColor()
     {
         int rnd = Random.Range(0, 100);
@@ -34,18 +32,14 @@ public class EnemyChargeCombat : EnemyCombatV1
             lowLimit = limit;
         }
     }
-
     protected override bool Shoot()
     {
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        //Log.log("dist " + dist);
-        //Log.log("phase " + GetComponent<EnemyChargeInput>().phase);
         if (dist >3&& GetComponent<EnemyChargeInput>().isAttacking==false
             || GetComponent<EnemyChargeInput>().stopBurst==true)
         {
             return false;
         }
-
         else
         {
             if (colors.Length > 1) SetRandomBulletColor();

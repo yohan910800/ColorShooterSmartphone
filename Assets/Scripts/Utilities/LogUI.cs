@@ -5,19 +5,16 @@ using UnityEngine.UI;
 
 public class LogUI : MonoBehaviour
 {
+    public float lifeTime = 3.0f;
+    public static LogUI Instance { get; private set; }
     Text txt;
     float time;
     bool isShowing;
-    public float lifeTime = 3.0f;
-    public static LogUI Instance {get; private set;}
-
-    // Start is called before the first frame update
+    
     void Awake(){
         Instance = this;
         txt = GetComponentInChildren<Text>();
     }
-
-    // Update is called once per frame
     void Update(){
         if(isShowing){
             time -= Time.unscaledDeltaTime;

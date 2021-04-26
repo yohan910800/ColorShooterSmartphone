@@ -9,26 +9,22 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public GameObject menuPanel;
-
-    public string nextStage; //needs to be saved
-
-    bool showingMenu;
-    Inventory inventory;
+    
     public TextMeshProUGUI coinsTxt;
     public TextMeshProUGUI lifeTxt;
     public TextMeshProUGUI stageNameTxt;
     public RawImage video;
     public string stageName;
+    public string nextStage; //needs to be saved
     int currentCoin;
     int currentLife;
+    bool showingMenu;
+    Inventory inventory;
 
     void Start()
     {
         nextStage = "Tutorial";//tmp
-        //SetCoinsAndLifeText();
-        //DisplayTheNameOfTheNextStage();
         DisplayTheVideoOfTheNextStage();
-    
     }
     
     void SetCoinsAndLifeText()
@@ -51,9 +47,6 @@ public class MainMenu : MonoBehaviour
         video.texture = Resources.Load<Texture>("Texture For Videos/video");
         //to do with kim
     }
-
-   
-
     public void Play()
     {
         SceneManager.LoadScene(nextStage);

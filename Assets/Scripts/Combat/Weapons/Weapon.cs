@@ -15,6 +15,13 @@ public class Weapon
     public int MagSize { get; protected set; }
     public float ReloadTime { get; protected set; }
     public int socketIndex { get; set; }
+
+    public float barrelLen;
+    // bonus
+    public int bonusIndex;
+    public bool doesItHaveDoubleShot = false;
+    public bool doesItHavePoisonBullet = false;
+
     protected int damage;
     protected float fireRate;
     protected string bulletName;
@@ -22,19 +29,13 @@ public class Weapon
     protected GameObject bulletPrefab;
     protected GameObject blankPrefab;
     protected float bulletSpeed;
-
     protected ICharacter owner;
     protected Colors bulletColor;
     protected bool isActive;
-    public float barrelLen;
+    
     protected List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     protected GameManager gm;
     protected GameObject particlePrefab;
-
-    // bonus
-    public int bonusIndex;
-    public bool doesItHaveDoubleShot = false;
-    public bool doesItHavePoisonBullet = false;
 
     Bullet bullet;
     GameObject bulletObj;
@@ -65,21 +66,16 @@ public class Weapon
             sr.sprite = sprite;
         }
     }
-
     public virtual void Deactivate()
     {
         isActive = false;
     }
-
     public virtual void ChangeColor(Colors color)
     {
         bulletColor = color;
     }
-
-
     public virtual bool Shoot(GameObject target, Vector3 aimDir)
     {
-
         foreach (Transform t in sockets)
         {
             if (target != null)//yohan added
@@ -90,24 +86,19 @@ public class Weapon
                 {
                     MonoBehaviour.Instantiate(particlePrefab, t.position +
                         (direction * barrelLen), t.rotation);
-
                     MonoBehaviour.Instantiate(blankPrefab, t.position + (direction * barrelLen),
                         t.rotation);
                 }
                 else
                 {
                     MonoBehaviour.Instantiate(particlePrefab, t.position + (direction * barrelLen), t.rotation);
-
                     bulletObj = MonoBehaviour.Instantiate(bulletPrefab, t.position + (direction * barrelLen), t.rotation) as GameObject;
                     bullet = bulletObj.GetComponent<Bullet>();
                     bullet.Init(owner, direction, bulletSpeed, DamageCalculation(damage), range, bulletColor);
-
-
                     if (doesItHavePoisonBullet == true)
                     {
                         bullet.doesPoisonedBulletIsActivate = true;
                     }
-
                     if (doesItHaveDoubleShot == true)
                     {
                         GameObject bulletObj2 = MonoBehaviour.Instantiate
@@ -115,7 +106,6 @@ public class Weapon
                             + new Vector3(0.5f, 0.0f, 0.0f), t.rotation) as GameObject;
                         Bullet bullet2 = bulletObj2.GetComponent<Bullet>();
                         bullet2.Init(owner, direction, bulletSpeed, DamageCalculation(damage), range, bulletColor);
-
                     }
                 }
             }
@@ -123,19 +113,13 @@ public class Weapon
         }
         return true;
     }
-
-
     public virtual int DamageCalculation(int damage)
     {//<-- this damage is weapon damage.
         int result = damage;
-
-
         //============================================
         // attack stats calculation
         //============================================
         result += owner.GetStats().Attack;
-
-
         //-------------------------------------
         // Critical Chance
         //-------------------------------------
@@ -146,9 +130,6 @@ public class Weapon
             result *= 2;
 
         }
-        //Debug.Log(owner + "   " + dice + "  <  " + owner.GetStats().CriticalChance + " attack" + owner.GetStats().Attack + "+weaponDamage" + damage + "    " + result);
-
-
         return result;
     }
 }

@@ -18,7 +18,6 @@ public class PhaseControllerInteraction : Interactable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //player.GetHit(100);
         if (collision.name == "Player")
         {
             //saveSystemManager.OnHitSaveData(collision);

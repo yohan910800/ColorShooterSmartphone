@@ -10,31 +10,21 @@ public class Ranged1 : Character {
     public string jsonFileDialogName;
     public FloatingDialogManager floatingDialog;
     public GameObject kindOfBlood;//yohan added
-
-    GameObject gObj;
-
     [Range(1,3)]
     public int socketNo;
     public GruntWeapon weapon;
     public bool isAimedByPlayer;// yohan added
 
-     float flashTime=0.1f;//yohan added
-
-    bool activateGotHitTimer;//yohan added
+    GameObject gObj;
+    float flashTime=0.1f;//yohan added
     float gotHitTimer;//yohan added
-
-    SpriteRenderer bodySprite;// yohan added
-    Color originalColor;//yohan added
-
-    //GameObject poisonZone;
-    GameObject deadBody;
-    //GameObject dropEnergyEffect;
-
+    bool activateGotHitTimer;//yohan added
     //bonus
     bool justOncePoison;
-
+    SpriteRenderer bodySprite;// yohan added
+    Color originalColor;//yohan added
+    GameObject deadBody;
     GameObject dropCoinsObj;
-
     public enum GruntWeapon{
         SingleShooter,
         SingleBigShot,
@@ -60,14 +50,11 @@ public class Ranged1 : Character {
         SingleShooterWithBulletColor,
         FireBulletShooter,
         FireCharge
-
-
     }
     Transform[][] sockeColl;
 
     public override void Init(){
         base.Init();
-
         
         if (gameObject.tag != "FourHandsBoss" && gameObject.tag!="OneHandBoss"&& gameObject.tag != "DualYellowBoss")
         {
@@ -85,28 +72,13 @@ public class Ranged1 : Character {
             AddWeapon(weap);
             ActivateWeapon(inventory.Weapons[0]);
         }
-
         bodySprite = transform.Find("Body").GetComponent<SpriteRenderer>();//yohan added
         originalColor = bodySprite.color;
-
-
-
         // bonus
-
-        //poisonZone = Resources.Load<GameObject>("Prefabs/Bonus/poisonZone");
         kindOfBlood = Resources.Load<GameObject>("Prefabs/Effects/KindOfBloodEffect");
         InitDeadBody();
-        //dropEnergyEffect= Resources.Load<GameObject>("Prefabs/Effects/DropEnergyEffect");
-        //DeadBody.transform.Find("Body").GetComponent<SpriteRenderer>().color = originalColor;
-        //deadBody.GetComponentInChildren<SpriteRenderer>().color = originalColor;
-        //foreach(SpriteRenderer sprite in deadBody.GetComponentsInChildren<SpriteRenderer>())
-        //{
-        //    sprite.color = originalColor;
-        //}
         dropCoinsObj= Resources.Load<GameObject>("Prefabs/CoinGroup");
-
     }
-
     void InitDeadBody()
     {
         switch (SceneManager.GetActiveScene().name)
@@ -129,9 +101,7 @@ public class Ranged1 : Character {
                 break;
             case "Stage5":
                 break;
-
         }
-
     }
 
     protected override void InitInput(){
@@ -140,28 +110,20 @@ public class Ranged1 : Character {
     //yohan added
     protected override void Update()
     {
-        
         base.Update();
-
         OnNotMovingWhenHitTimer();
         //bonus 
         OnPoisonCharacter();
     }
 
-
     void FlashRed()
     {
         bodySprite.color = Color.red;
-
         Color tmp = bodySprite.color;
-
         tmp.r = 0.4f;
         tmp.g = 0.4f;
-
         tmp.b = 0.4f;
-
         tmp.a = 1.0f;
-
         bodySprite.color = tmp;
         Invoke("ResetColor", flashTime);
     }
@@ -169,42 +131,25 @@ public class Ranged1 : Character {
     {
         bodySprite.color = originalColor;
     }
-
-    
-
     //yohan added
     void OnNotMovingWhenHitTimer()
     {
-        //if (gameObject.tag != "Boss" || gameObject.tag != "MiniBoss")
-        //{
-
-            if (activateGotHitTimer == true)
+        if (activateGotHitTimer == true)
+        {
+            gotHitTimer += Time.deltaTime;
+            if (gotHitTimer >= 0.5f)
             {
-                
-                gotHitTimer += Time.deltaTime;
-            //stats.ModifySpeed(-2.0f);
-                if (gotHitTimer >= 0.5f)
-                {
-                    stats.ResetSpeed();
-                
-                activateGotHitTimer = false;
-                    gotHitTimer = 0.0f;
-                }
+                stats.ResetSpeed();
+            activateGotHitTimer = false;
+                gotHitTimer = 0.0f;
             }
-        //}
-        //else
-        //{
-        //    return;
-        //}
-       
+        }
     }
 
     public void GetHit(int dmg){
-
         activateGotHitTimer = true;//yohan added
         stats.LowerHP(dmg);
         stateUI.Refresh();
-
         if (stats.HP == 0 && IsAlive){
             OnDeath();
         }
@@ -215,11 +160,9 @@ public class Ranged1 : Character {
             dt.Init(dmg, Color.white);
 
         }
-
         FlashRed();//yohan added
         OnInstantiateKindOfBlood();//yohan added
         PlayGetHitSound();
-
     }
     void PlayGetHitSound()
     {
@@ -233,7 +176,6 @@ public class Ranged1 : Character {
         Destroy(obj, 1.0f);
     }
     
-
     public void GetHeal(int heal)
     {
         stats.Heal(heal);
@@ -262,13 +204,11 @@ public class Ranged1 : Character {
     //instantiate the dialog text
     public void ShowDialogText()
     {
-         float dist = Vector3.Distance(transform.position, gm.player.transform.position);
-
+        float dist = Vector3.Distance(transform.position, gm.player.transform.position);
         if (gm.showDialogText == true)
         {
                   gObj = Instantiate(dialogTextPrefab, transform.position, Quaternion.identity) as GameObject;
                 floatingDialog = gObj.GetComponent<FloatingDialogManager>();
-                //dialog.Init("Test", Color.white);
         }
     }
 
@@ -291,19 +231,8 @@ public class Ranged1 : Character {
         {
             floatingDialog.OnDialogEnded -= OnDialogEnd;
         }
-
     }
-    void DisableAttackOnTag()
-    {
-        if (gameObject.tag == "NotAimable")
-        {
-
-        }
-        else
-        {
-
-        }
-    }
+  
     //bonus
 
 
@@ -313,15 +242,8 @@ public class Ranged1 : Character {
         {
             if (justOncePoison == false)
             {
-
-                //GameObject poisonZoneObj = MonoBehaviour.Instantiate(poisonZone, transform.position,
-                //            Quaternion.identity);
-                //poisonZoneObj.transform.parent = gameObject.transform;
-
-                //Log.log("name " + poisonZone.name);
                 StartCoroutine(PoisonCoroutine(4.0f));
                 justOncePoison = true;
-
             }
         }
     } 
@@ -338,9 +260,7 @@ public class Ranged1 : Character {
         {
             var gObj = Instantiate(damageTextPrefab, transform.position, Quaternion.identity) as GameObject;
             DamageText dt = gObj.GetComponent<DamageText>();
-
             dt.Init(dmg, dotColor);
-
         }
     }
 
@@ -355,26 +275,18 @@ public class Ranged1 : Character {
             if (time2 > 0.5f)
             {
                 GetHitByDot(2,Color.magenta);
-
                 time2 = 0;
-
             }
-
-            // transform.position = currentpos;
-            
             yield return null;
         }
     }
-
 
     public override bool HitCheck(Bullet bullet){
         ICharacter character = bullet.Owner;
         if (character.GetGameObject().name == "Player")
         {
-            // int damage  = color == bullet.BulletColor ? bullet.Damage : bullet.Damage * Static.colorDmgMultiplier;
             int damage = bullet.Damage;
             GetHit(damage);//yohan added
-
             return true;
         }
         return false;
@@ -406,7 +318,6 @@ public class Ranged1 : Character {
         }
         Instantiate(deadBody, transform.position,Quaternion.identity);
         CalculateHowManyyCoinsShouldBeDroped();
-        //Instantiate(dropEnergyEffect, transform.position,Quaternion.identity);
         IsAlive = false;
         stateUI.OnDeath();
         base.OnDeath();
@@ -415,9 +326,7 @@ public class Ranged1 : Character {
         {
             floatingDialog.OnDialogEnded -= OnDialogEnd;
         }
-
         audioManager.Play("EnemyDie");
         Destroy(gameObject);
     }
-
 }

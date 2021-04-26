@@ -9,7 +9,7 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
    
     public Colors[] colors;
     public int[] ratios;
-
+    public GameObject handsContainer;
     public bool isHiting;
     float charge2;
     float charge3;
@@ -23,14 +23,11 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
     GameObject stick;
     GameObject stickBullet;
     Vector3 curentPos;
-
-    public GameObject handsContainer;
+    
     Weapon weap;
-
 
     public override void Init(ICharacter character)
     {
-
         base.Init(character);
         foreach (Colors c in colors)
         {
@@ -48,24 +45,18 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
         CreateNewWeapon();
         OnWeaponChange(character.GetInventory().Weapons[0]);
         character.ActivateWeapon(character.GetInventory().Weapons[0]);
-
-
     }
     void CreateNewWeapon()
     {
         var weaponSocket1 = transform.Find("TurnObject1").Find("Hand1");
         var weaponSocket2 = transform.Find("Hand2");
-
         sockeColl = new Transform[][]{
-
             Hand2=new Transform[]{weaponSocket2},
             Hand1=new Transform[]{weaponSocket1},
         };
-
         weap = new BossStickWeapon() as Weapon;
         weap.Init(character, Hand1);
         character.AddWeapon(weap);
-
     }
 
     public override void Update()
@@ -74,7 +65,7 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
         if (isHiting == false)
         {
             handsContainer.transform.Rotate(new Vector3(0, 0, 2f),Space.Self);
-            handsContainer.transform.position = transform.position /*+ new Vector3(-0.7f, -0.1f, 0.0f)*/;
+            handsContainer.transform.position = transform.position ;
         }
     }
     void SetRandomBulletColor()
@@ -92,7 +83,6 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
             lowLimit = limit;
         }
     }
-
     void TimerChangeColor()
     {
         timerChangeColor += Time.deltaTime;
@@ -102,17 +92,4 @@ public class OneHandRoundMeleeWeaponEnemyCombat : EnemyCombatV1
             timerChangeColor = 0;
         }
     }
-    //bool OneHandShoot()
-    //{
-    //    bool shot = weap.Shoot(gameObject, aimDir);
-    //    if (shot) shotCount++;
-    //    if (weapon.MagSize > 0 && shotCount >= weapon.MagSize)
-    //    {
-    //        weapon.IsReloading = true;
-    //        shotCount = 0;
-    //        reloadCountdown = weapon.ReloadTime;
-    //        return false;
-    //    }
-    //    return shot;
-    //}
 }

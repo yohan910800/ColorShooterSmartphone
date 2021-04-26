@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MiniStageExit : Interactable
 {
+    //tutorial
+    public GameObject[] tutorialEnterPoints;
+
     GameObject phaseControllerTrigger;
     GameObject playerObj;
     GameObject transitionBlackScreen;
     Animator transitionBlackScreenAnimator;
     CameraControl camControl;
 
-
-    //tutorial
-    public GameObject[] tutorialEnterPoints;
     int i;
-
     protected override void Start()
     {
         phaseControllerTrigger = GameObject.Find("PhaseControllerTrigger");
@@ -22,29 +21,22 @@ public class MiniStageExit : Interactable
         transitionBlackScreenAnimator = transitionBlackScreen. GetComponent<Animator>();
         transitionBlackScreenAnimator.SetTrigger("TransitionAnimTrigger");
         camControl = GameObject.Find("MainCamera").GetComponent<CameraControl>();
-        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
-
             playerObj=collision.gameObject;
             transitionBlackScreenAnimator.SetTrigger("TransitionAnimTrigger");
             StartCoroutine(TransitionTime(2.0f));
             camControl.SetTheCameraOnTargetPosInstantly();
             if (SceneManager.GetActiveScene().name == "Tutorial")
             {
-                //i++;
                 i = GameObject.Find("Essential").transform.Find("MapManager").GetComponent<MapManager>().
                         phase - 2;
             }
         }   
-    }
-    private void Update()
-    {
-        //Debug.Log("mini stage i " + i);
     }
     IEnumerator TransitionTime(float duration)
     {
@@ -53,22 +45,9 @@ public class MiniStageExit : Interactable
         {
             if (timer >= duration)
             {
-                //if (SceneManager.GetActiveScene().name != "Tutorial")
-                //{
-                    playerObj.transform.position =
-                   phaseControllerTrigger.transform.position
-                   -
-                   new Vector3(0.0f, 4.0f, 0.0f);
-                //}
-                //else
-                //{
-
-                //    playerObj.transform.position =
-                //   tutorialEnterPoints[i].transform.position -
-                //   new Vector3(0.0f, 3.0f, 0.0f);
-                //}
+                playerObj.transform.position =
+                phaseControllerTrigger.transform.position - new Vector3(0.0f, 4.0f, 0.0f);
             }
-            
             timer += Time.deltaTime;
         }
         yield return null;

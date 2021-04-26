@@ -13,7 +13,6 @@ public class OneHandRoundMeleeWeaponEnemyInput : MonoBehaviour, IInputModule
 
 
     // Variables
-    //public bool isFrozen { get; set; }
     public int phase;
     public bool onPosition;
     public LayerMask layerMask;
@@ -59,15 +58,8 @@ public class OneHandRoundMeleeWeaponEnemyInput : MonoBehaviour, IInputModule
 
     void UpdateDirection()
     {
-        //Log.log("speed " + getEnemyStats.Speed);
-        //dist = Vector3.Distance(transform.position, target.transform.position);
         CheckIfThereIsAWallInFront();
         ChooseMovement();
-            //Log.log("dist " + dist);
-            Log.log("RND " + rnd);
-        
-
-
     }
     void CheckIfThereIsAWallInFront()
     {
@@ -81,7 +73,6 @@ public class OneHandRoundMeleeWeaponEnemyInput : MonoBehaviour, IInputModule
             {
                 getEnemyStats.SetSpeed(0.0f);
                 isAWallIsFrontOf = true;
-
             }
             else
             {
@@ -134,9 +125,6 @@ public class OneHandRoundMeleeWeaponEnemyInput : MonoBehaviour, IInputModule
                 case 2:
                     phase = 2;
                     break;
-                    //case 3:
-                    //    phase = 2;
-                    //    break;
             }
 
             timeChoosePhase = 0;
@@ -172,6 +160,5 @@ public class OneHandRoundMeleeWeaponEnemyInput : MonoBehaviour, IInputModule
 
     void PlayIntroScene()
     {
-        //do it with animation
     }
 }

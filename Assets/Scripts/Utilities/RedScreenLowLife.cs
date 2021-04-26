@@ -5,11 +5,8 @@ using UnityEngine;
 public class RedScreenLowLife : MonoBehaviour
 {
     GameObject player;
-    
-
     void Start()
     {
-
         player = GameObject.Find("Player");
         GetComponent<SpriteRenderer>().enabled = false;
     }
